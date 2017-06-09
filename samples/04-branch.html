@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>gh3</title>
+    <title>demo gh3</title>
     
 </head>
 <body>
@@ -12,25 +12,26 @@
 
   <script src="../vendors/jquery-2.1.0.min.js"></script>
   <script src="../vendors/underscore-min.js"></script>
-  <script src="../gh3.js"></script>
+  <script src="../vendors/gh3.js"></script>
   <script>
 
-    var k33g = new Gh3.User("k33g")
+    var eeee = new Gh3.User("kikitux")
       ,	repoTitle = $("h1")
       ,	branchTitle = $("h2")
       ,	branchContents = $("ul");
 
-    var k33gBlog = new Gh3.Repository("k33g.github.com", k33g);
+    var eeeerepo = new Gh3.Repository("eeee", eeee);
 
-    k33gBlog.fetch(function (err, res) {
+    eeeerepo.fetch(function (err, res) {
       if(err) { throw "outch ..." }
 
-      repoTitle.html(k33gBlog.full_name);
+      repoTitle.html("repo: " + eeeerepo.full_name);
 
-      k33gBlog.fetchBranches(function (err, res) {
+        eeeerepo.fetchBranches(function (err, res) {
 
-        var master = k33gBlog.getBranchByName("master");
-        branchTitle.html(master.name + " (" + master.sha + ") :");
+        var master = eeeerepo.getBranchByName("gh-pages");
+
+        branchTitle.html(master.name + ":");
 
         master.fetchContents(function (err, res) {
           master.eachContent(function (content) {
